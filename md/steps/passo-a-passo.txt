@@ -1,0 +1,42 @@
+//INICIALIZAÇÃO DA APLICAÇÃO
+
+>> npm init -y (instala o package.json arquivo principal do projeto)
+
+*criar arquivo server.js
+
+//BANCO DE DADOS
+
+** Configurar o banco de dados MongoDB
+
+>> npm i prisma --save-dev (instala o prisma que facilita a interação com o Banco de dados)
+
+>> npx prisma init (cria os arquivos de configuração do prisma)
+
+** Prisma Client (forma de enxergarmos nossa base de dados)
+
+>> npm i @prisma/client
+
+>> npx prisma db push (executar o comando sempre que o schema prisma for atualizado)
+
+>> npx prisma studio (abre uma interface de banco de dados (tabela))
+
+>> npm i express (biblioteca que ajuda na criação de apis e rotas em aplicações web (instala o node_modules e o package-lock.json))
+
+*para importar da forma mais moderna
+no package.json
+"type":"module"
+
+obs: sintaxe "commonjs" é padrão do node, nesse caso, não necessário
+const express = require('express')
+
+>> node --watch server.js (reinicia o servidor automaticamente)
+
+*app rodando na porta tal app.listen(3000, () => {})
+
+//AUTENTICAÇÃO JWT
+
+*instalação do jsonwebtoken
+
+>> npm i jsonwebtoken
+
+

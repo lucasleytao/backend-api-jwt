@@ -1,0 +1,9 @@
+#dependencies do node
+node_modules/
+
+#arquivos de ambiente
+.env
+*.env
+.env.local
+.env.development
+.env.production
