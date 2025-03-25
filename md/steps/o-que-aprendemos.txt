@@ -1,0 +1,8 @@
+1. Criar uma API com Node e express
+2. Criptografia de senhas
+3. Uso de Banco de Dados MongoDB
+4. Uso do Prisma
+5. Rotas Públicas: Onde crio o token do usuário
+  *Rotas Privadas: Pega o token e verifica se é válido ou não
+6. Token JWT para autenticação 
+  *Middlewares

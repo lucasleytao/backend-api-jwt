@@ -8,11 +8,14 @@ import { PrismaClient } from '@prisma/client' //importa a classe prismaclient do
 
 const prisma = new PrismaClient() //cria uma nova instancia (objeto prisma) do prismaclient para operacoes no banco
 
-const router = express.Router() //utiliza apenas o router do express
+const router = express.Router() //utiliza apenas o router do express para o codigo
+
+//preciso desse secret para criar o token e tambem para verificar se o token e valido ou nao
+const JWT_SECRET = process.env.JWT_SECRET //caminho para acessar algo no arquivo .env
 
 //rota de cadastro
 
-router.post('/cadastro', async (req, res) => {
+router.post('/cadastro', async (req, res) => { //router do express
     
     try { //tente isso primeiro
 
@@ -53,7 +56,7 @@ router.post('/login', async (req, res) => {
         if(!user) {
             return res.status(404).json({message: 'Usuário não encontrado! Verifique suas credenciais.'})
         }
-        //compara senha cadastrada e digitada
+        //compara senha cadastrada no banco com a digitada
         const isMatch = await bcrypt.compare(userInfo.password, user.password)
 
         if(!isMatch) {
@@ -61,9 +64,10 @@ router.post('/login', async (req, res) => {
         }
 
         //gerar token JWT
-        
 
-        res.status(200).json(user)
+        const token = jwt.sign({id: user.id}, JWT_SECRET, {expiresIn: '1m'}) //payload: jwt_secret: options
+
+        res.status(200).json(token) //exibe o token: header[algoritmo e tipo de token] payload[dados] signature[verificacao]
     }
     catch(err) {
         res.status(500).json({message: 'Erro de autenticação. Tente novamente.'})

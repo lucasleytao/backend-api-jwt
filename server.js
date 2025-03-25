@@ -1,11 +1,14 @@
 import express from 'express'
-import publicRoutes from './routes/public.js'
+import publicRoutes from './src/routes/public.js'
+import privateRoutes from './src/routes/private.js'
+import auth from './src/middlewares/auth.js'
 
 const app = express() //guarda o express dentro de uma variavel app e utiliza todos os seus recursos
 
-app.use(express.json()) //avisa para o express utilize json
+app.use(express.json()) //avisa para que o express utilize json
 
 app.use('/', publicRoutes)
+app.use('/', auth, privateRoutes)
 
 app.listen(3000, () => {
     console.log('servidor rodando na porta 3000')
