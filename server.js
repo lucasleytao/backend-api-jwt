@@ -8,7 +8,7 @@ const app = express() //guarda o express dentro de uma variavel app e utiliza to
 app.use(express.json()) //avisa para que o express utilize json
 
 app.use('/', publicRoutes)
-app.use('/', auth, privateRoutes)
+app.use('/', auth, privateRoutes) //o express determina que antes de acessar as rotas privadas deve-se passar pelo auth
 
 app.listen(3000, () => {
     console.log('servidor rodando na porta 3000')
